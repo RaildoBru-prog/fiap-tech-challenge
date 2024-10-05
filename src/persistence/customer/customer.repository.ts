@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from '../prisma.service';
-import { CustomerRepository } from 'src/application/ports/customer.repository';
+import { CustomerRepository } from 'src/repository/ports/customer.repository';
 import { NotPersistedCustomer } from 'src/entities/domain/customer';
 import { CustomerMapper } from './customer.mapper';
 

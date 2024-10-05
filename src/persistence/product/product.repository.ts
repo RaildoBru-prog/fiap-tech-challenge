@@ -1,10 +1,10 @@
 import { Injectable } from '@nestjs/common';
-import { ProductRepository } from 'src/application/ports/product.repository';
+import { ProductRepository } from 'src/repository/ports/product.repository';
 import { NotPersistedProduct, Product } from 'src/entities/domain/product';
 import { ProductCategoryValue } from 'src/entities/domain/value-objects/product-category';
 import { PrismaService } from '../prisma.service';
 import { ProductMapper } from './product.mapper';
-import { NotFoundError } from 'src/application/errors/not-found.error';
+import { NotFoundError } from 'src/repository/errors/not-found.error';
 
 @Injectable()
 export class PrismaProductRepository implements ProductRepository {

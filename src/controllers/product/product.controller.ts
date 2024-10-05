@@ -1,5 +1,5 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
-import { ProductRepository } from '../../application/ports/product.repository';
+import { ProductRepository } from '../../repository/ports/product.repository';
 import { ProductCategoryValue } from 'src/entities/domain/value-objects/product-category';
 import { CreateProductDto } from './dtos/create-product.dto';
 import { NotPersistedProduct } from 'src/entities/domain/product';

@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
 import { ProductController } from './product.controller';
-import { PersistenceProductModule } from 'src/interfaces/product/persistence.product.module';
+import { PersistenceProductModule } from 'src/persistence/product/persistence.product.module';
 
 @Module({
   imports: [PersistenceProductModule],
