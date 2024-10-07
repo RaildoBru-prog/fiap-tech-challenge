@@ -1,5 +1,5 @@
 import { Module } from '@nestjs/common';
-import { OrderRepository } from "src/application/ports/order.repository";
+import { OrderRepository } from "src/repository/ports/order.repository";
 import { PrismaOrderRepository } from './order.repository';
 import { PrismaService } from '../prisma.service';
 import { CustomerMapper } from '../customer/customer.mapper';

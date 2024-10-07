@@ -1,10 +1,10 @@
 import { Injectable } from "@nestjs/common";
-import { OrderRepository } from "src/application/ports/order.repository";
+import { OrderRepository } from "src/repository/ports/order.repository";
 import { CreateOrderDto } from "./dtos/create-order.dto";
 import { NotPersistedOrder } from "src/entities/domain/order";
-import { ProductRepository } from "src/application/ports/product.repository";
+import { ProductRepository } from "src/repository/ports/product.repository";
 import { OrderDto } from "./dtos/order.dto";
-import { CustomerRepository } from "src/application/ports/customer.repository";
+import { CustomerRepository } from "src/repository/ports/customer.repository";
 import { OrderStatusValue } from "src/entities/domain/value-objects/order-status";
 import * as _ from 'lodash';
 

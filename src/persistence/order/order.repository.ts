@@ -1,5 +1,5 @@
 import { Injectable } from "@nestjs/common";
-import { OrderRepository } from "src/application/ports/order.repository";
+import { OrderRepository } from "src/repository/ports/order.repository";
 import { PrismaService } from '../prisma.service';
 import { OrderMapper } from "./order.mapper";
 import { NotPersistedOrder, Order } from "src/entities/domain/order";

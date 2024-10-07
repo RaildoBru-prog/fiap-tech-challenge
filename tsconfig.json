@@ -16,6 +16,12 @@
     "noImplicitAny": false,
     "strictBindCallApply": false,
     "forceConsistentCasingInFileNames": false,
-    "noFallthroughCasesInSwitch": false
-  }
+    "noFallthroughCasesInSwitch": false,
+    "paths": {
+      "@usecases/*": ["./src/usecases/*"],
+      "@usecases": ["./src/usecases/index.ts"],
+    }
+  },
+  "include": ["src/**/*"],
+
 }

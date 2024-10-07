@@ -1,45 +1,26 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
-import { ProductRepository } from '../../application/ports/product.repository';
+import { ProductRepository } from '../../repository/ports/product.repository';
 import { ProductCategoryValue } from 'src/entities/domain/value-objects/product-category';
 import { CreateProductDto } from './dtos/create-product.dto';
 import { NotPersistedProduct } from 'src/entities/domain/product';
-import { ProductDto } from './dtos/product.dto';
+
+import { ProductDto } from "src/types/dtos/product.dto";
+import  { ProductUseCases } from 'src/usecases/product';
 
 @Injectable()
 export class ProductController {
 	constructor(private productRepository: ProductRepository) {}
 
-	createProduct(){
-		return 'Criado o Produto mano';
+	createProduct(product: CreateProductDto){
+		const productCase = new ProductUseCases(this.productRepository);
+    return productCase.creteProduct(product);
 	}
 
 	async findByCategory(category: ProductCategoryValue) {
-    	const products = await this.productRepository.findByCategory(category);
-    	return products.map(product => new ProductDto(product));
-  	}
-
-
-
-	/*static async ObterEstudantesPorDisciplina(
-    disciplinaId: number,
-    dbconnection: DbConnection
-  ): Promise<string> {
-    const matriculaGateway = new MatriculaGateway(dbconnection);
-    const estudanteGateway = new EstudanteGateway(dbconnection);
-    const disciplinaGateway = new DisciplinaGateway(dbconnection);
-    const estudantes = await MatriculaUseCases.ObterEstudantesPorDisciplina(
-      disciplinaId,
-      matriculaGateway,
-      estudanteGateway,
-      disciplinaGateway
-    );
-
-    return EstudanteAdapter.adaptJsonEstudantes(estudantes);
-  }*/
+    const productCase = new ProductUseCases(this.productRepository);
+    return await productCase.findProduct(category);
+  }
 }
-
-
-
 
 /*
 import { Injectable, NotFoundException } from '@nestjs/common';
@@ -108,11 +89,4 @@ export class ProductService {
     return new ProductDto(await this.productRepository.update(id, persistedProduct));
   }
 }
-
-
-
-
-
-
-
 */
