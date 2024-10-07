@@ -18,6 +18,11 @@ export class ApiProductController {
   async find(@Query('category') category: ProductCategoryValue) {
     return await this.productController.findByCategory(category);
   }
+
+  @Post()
+  async create(@Body() createProductDto: CreateProductDto) {
+    return await this.productController.createProduct(createProductDto);
+  }
   
 
 
@@ -58,9 +63,6 @@ export class ApiProductController {
     return this.productService.update(id, updateProductDto);
   }
   */
-
-
-
 
 }
 
