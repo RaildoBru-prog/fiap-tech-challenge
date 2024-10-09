@@ -1,8 +1,9 @@
 import { Body, Controller, Get, HttpCode, HttpStatus, Post } from '@nestjs/common';
-//import { ApiTags } from '@nestjs/swagger';
+import { ApiTags } from '@nestjs/swagger';
 import { CreateOrderDto } from './dtos/create-order.dto';
 import { OrderController } from 'src/controllers/order/order.controller';
 
+@ApiTags('order')
 @Controller('order')
 export class ApiOrderController {
 	constructor(private orderController: OrderController) {}

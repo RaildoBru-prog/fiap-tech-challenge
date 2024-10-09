@@ -1,11 +1,11 @@
 import { Body, Controller, HttpCode, Post, Res } from '@nestjs/common';
 import { CreateCustomerDto } from './dtos/create-customer.dto';
-//import { ApiTags } from '@nestjs/swagger';
+import { ApiTags } from '@nestjs/swagger';
 import { LoginCustomerDto } from './dtos/login-customer.dto';
 import { CustomerController } from 'src/controllers/customer/customer.controller';
 
 
-//@ApiTags('customer')
+@ApiTags('customer')
 @Controller('customer')
 export class ApiCustomerController {
   constructor(private customerController: CustomerController) {}

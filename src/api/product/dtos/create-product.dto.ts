@@ -1,13 +1,13 @@
-//import { ApiProperty } from "@nestjs/swagger";
+import { ApiProperty } from "@nestjs/swagger";
 import { ProductCategoryValue } from "src/entities/domain/value-objects/product-category";
 
 export class CreateProductDto {
-  //@ApiProperty()
+  @ApiProperty()
   name: string;
-  //@ApiProperty()
+  @ApiProperty()
   price: number;
-  //@ApiProperty()
+  @ApiProperty()
   description: string;
-  //@ApiProperty({ name: 'category', enum: ProductCategoryValue})
+  @ApiProperty({ name: 'category', enum: ProductCategoryValue})
   category: ProductCategoryValue;
 }
