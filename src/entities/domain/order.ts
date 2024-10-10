@@ -16,13 +16,15 @@ class _Order<T extends PersistedEntity | NotPersistedEntity = PersistedEntity> e
   products: OrderProduct[];
   total: number;
   status: OrderStatus;
+  statusNum: number;
 
-  constructor(order: { customer: Customer | null; products: OrderProduct[]; status: OrderStatusValue; total: number } & T) {
+  constructor(order: { customer: Customer | null; products: OrderProduct[]; status: OrderStatusValue; total: number; statusNum: number; } & T) {
     super(order);
     this.customer = order.customer;
     this.products = order.products;
     this.total = order.total;
     this.status = new OrderStatus(order.status);
+    this.statusNum = order.statusNum;
   }
 }
 

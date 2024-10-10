@@ -23,6 +23,7 @@ export class OrderUseCases {
                 : null,
             products: order.products.map(p => ({ ...p, ...indexedProducts[p.id] })),
             status: OrderStatusValue.Received,
+            statusNum: 1,
             total: products.reduce((acc, p) => acc + p.price, 0),
         });
         const persistedOrder = await this.orderRepository.create(newOrder);
@@ -33,4 +34,10 @@ export class OrderUseCases {
         const orders = await this.orderRepository.findAll();
         return orders.map(o => new OrderDto(o));
     }
+
+    async findOrderStatus(){
+        const orders = await this.orderRepository.findSort();
+        return orders.map(o => new OrderDto(o));
+    }
+
 }

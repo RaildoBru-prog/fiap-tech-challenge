@@ -21,7 +21,12 @@ export class OrderController {
     }
 
     async findAll() {
-        const orders = new OrderUseCases(this.orderRepository, this.productRepository, this.customerRepository);
+        const orders = new OrderUseCases(this.orderRepository, this.productRepository, this.customerRepository);        
         return await orders.findOrder();
+    }
+
+    async findSort() {
+        const orders = new OrderUseCases(this.orderRepository, this.productRepository, this.customerRepository);
+        return await orders.findOrderStatus();
     }
 }

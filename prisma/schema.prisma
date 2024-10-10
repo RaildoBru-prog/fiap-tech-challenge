@@ -32,6 +32,7 @@ model Order {
   updatedAt  DateTime       @updatedAt
   products   OrderProduct[]
   status     OrderStatus
+  statusNum Int
 }
 
 type OrderProduct {

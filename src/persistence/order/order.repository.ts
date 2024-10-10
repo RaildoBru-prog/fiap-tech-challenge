@@ -3,6 +3,7 @@ import { OrderRepository } from "src/repository/ports/order.repository";
 import { PrismaService } from '../prisma.service';
 import { OrderMapper } from "./order.mapper";
 import { NotPersistedOrder, Order } from "src/entities/domain/order";
+import { exit } from "process";
 
 @Injectable()
 export class PrismaOrderRepository implements OrderRepository {
@@ -24,6 +25,17 @@ export class PrismaOrderRepository implements OrderRepository {
         const persistedOrders = await this.prismaService.order.findMany({
             include: { customer: true }
         });
+        return persistedOrders.map( p => this.orderMapper.fromPersistence(p) )
+    }
+
+    async findSort(): Promise<Order[]> {
+        const persistedOrders = await this.prismaService.order.findMany({
+            include: { customer: true },
+            orderBy: {
+                statusNum : 'asc'
+            } 
+        });
+
         return persistedOrders.map(p => this.orderMapper.fromPersistence(p))
     }
 

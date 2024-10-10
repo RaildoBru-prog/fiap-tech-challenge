@@ -19,4 +19,10 @@ export class ApiOrderController {
 		return this.orderController.findAll();
 	}
 
+	@Get('/status')
+	@HttpCode(200)
+	findSort(){
+		return this.orderController.findSort();
+	}
+
 }

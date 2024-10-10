@@ -28,7 +28,8 @@ export class OrderMapper {
         category: product.category.getValue()
       })),
       total: order.total,
-      status: order.status.getValue()
+      status: order.status.getValue(),
+      statusNum: order.statusNum
     }
   }
 
@@ -43,7 +44,8 @@ export class OrderMapper {
         category: new ProductCategory(ProductCategoryValue[product.category])
       })),
       total: order.total,
-      status: OrderStatusValue[order.status]
+      status: OrderStatusValue[order.status],
+      statusNum: order.statusNum,
     })
   }
 }

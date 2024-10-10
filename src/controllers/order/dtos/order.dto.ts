@@ -13,6 +13,7 @@ export class OrderDto {
   }[];
   total: number;
   status: OrderStatusValue;
+  statusNum: number;
   customer: {
     name: string,
     email: string,
@@ -30,6 +31,7 @@ export class OrderDto {
     }));
     this.total = order.total;
     this.status = order.status.getValue();
+    this.statusNum = order.statusNum;
     this.customer = order.customer
       ? {
         name: order.customer.name,
