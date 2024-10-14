@@ -32,7 +32,8 @@ model Order {
   updatedAt  DateTime       @updatedAt
   products   OrderProduct[]
   status     OrderStatus
-  statusNum Int
+  statusNum  Int
+  //paymentStatus OrderPaymentStatus
 }
 
 type OrderProduct {
@@ -65,4 +66,10 @@ enum OrderStatus {
   Preparing
   Ready
   Finished
+}
+
+enum OrderPaymentStatus {
+  Waiting
+  Approved
+  Failed
 }

@@ -1,5 +1,7 @@
 import { Order } from "src/entities/domain/order";
 import { OrderStatusValue } from "src/entities/domain/value-objects/order-status";
+import { OrderStatusNumValue } from "src/entities/domain/value-objects/order-status-num";
+import { OrderpaymentStatusValue } from "src/entities/domain/value-objects/order-payment-status";
 import { ProductCategoryValue } from "src/entities/domain/value-objects/product-category";
 
 export class OrderDto {
@@ -14,6 +16,7 @@ export class OrderDto {
   total: number;
   status: OrderStatusValue;
   statusNum: number;
+  //paymentStatus: OrderpaymentStatusValue;
   customer: {
     name: string,
     email: string,
@@ -32,6 +35,7 @@ export class OrderDto {
     this.total = order.total;
     this.status = order.status.getValue();
     this.statusNum = order.statusNum;
+    //this.paymentStatus = order.paymentStatus.getValue();
     this.customer = order.customer
       ? {
         name: order.customer.name,

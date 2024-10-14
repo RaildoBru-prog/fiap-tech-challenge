@@ -3,6 +3,8 @@ import { Injectable } from "@nestjs/common";
 import { ProductCategory, ProductCategoryValue } from "src/entities/domain/value-objects/product-category";
 import { NotPersistedOrder, Order } from "src/entities/domain/order";
 import { OrderStatusValue } from "src/entities/domain/value-objects/order-status";
+import { OrderpaymentStatusValue } from "src/entities/domain/value-objects/order-payment-status";
+import { OrderStatusNumValue } from "src/entities/domain/value-objects/order-status-num";
 import { CustomerMapper } from "../customer/customer.mapper";
 
 const orderWithCustomer = Prisma.validator<Prisma.OrderDefaultArgs>()({
@@ -29,7 +31,8 @@ export class OrderMapper {
       })),
       total: order.total,
       status: order.status.getValue(),
-      statusNum: order.statusNum
+      statusNum: order.statusNum,
+      //paymentStatus: order.paymentStatus.getValue(),
     }
   }
 
@@ -45,7 +48,8 @@ export class OrderMapper {
       })),
       total: order.total,
       status: OrderStatusValue[order.status],
-      statusNum: order.statusNum,
+      statusNum: order.statusNum
+      //paymentStatus: OrderpaymentStatusValue[order.paymentStatus]
     })
   }
 }

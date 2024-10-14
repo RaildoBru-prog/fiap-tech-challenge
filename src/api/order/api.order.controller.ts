@@ -1,7 +1,9 @@
-import { Body, Controller, Get, HttpCode, HttpStatus, Post } from '@nestjs/common';
+import { Body, Controller, Get, HttpCode, HttpStatus, Param, Post, Put } from '@nestjs/common';
+////import { Body, Controller, Delete, Get, HttpCode, NotFoundException, Param, Post, Put, Query } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 import { CreateOrderDto } from './dtos/create-order.dto';
 import { OrderController } from 'src/controllers/order/order.controller';
+import { UpdateOrderDto } from './dtos/update-order.dto'
 
 @ApiTags('order')
 @Controller('order')
@@ -25,4 +27,8 @@ export class ApiOrderController {
 		return this.orderController.findSort();
 	}
 
+	@Put('/:id')
+  		update(@Param('id') id: string, @Body() status: UpdateOrderDto )  {
+		return this.orderController.updateOrder(id, status);
+  	}
 }

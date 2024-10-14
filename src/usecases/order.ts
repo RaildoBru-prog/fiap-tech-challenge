@@ -2,10 +2,10 @@ import { NotFoundException } from '@nestjs/common';
 import { OrderRepository } from 'src/repository/ports/order.repository';
 import { CustomerRepository } from "src/repository/ports/customer.repository";
 import { ProductRepository } from 'src/repository/ports/product.repository';
-import { exit } from 'process';
 import { OrderDto } from 'src/controllers/order/dtos/order.dto'; 
-import { OrderStatusValue } from "src/entities/domain/value-objects/order-status";
-import { NotPersistedOrder } from "src/entities/domain/order";
+import { OrderStatus } from "src/entities/domain/value-objects/order-status";
+import { OrderStatusNumValue } from 'src/entities/domain/value-objects/order-status-num';
+import { NotPersistedOrder, Order } from "src/entities/domain/order";
 import * as _ from 'lodash';
 
 export class OrderUseCases {
@@ -22,7 +22,7 @@ export class OrderUseCases {
                 ? await this.customerRepository.findByID(order.customerId)
                 : null,
             products: order.products.map(p => ({ ...p, ...indexedProducts[p.id] })),
-            status: OrderStatusValue.Received,
+            status: OrderStatus['Received'],
             statusNum: 1,
             total: products.reduce((acc, p) => acc + p.price, 0),
         });
@@ -40,4 +40,13 @@ export class OrderUseCases {
         return orders.map(o => new OrderDto(o));
     }
 
+    async updateOrder(id, param){
+
+        const ordeUpdate = {
+            "status" : OrderStatus[param.status],
+            "statusNum" : OrderStatusNumValue[param.status]
+        };
+        await this.orderRepository.updateStatus(id, ordeUpdate);
+        return await this.findOrderStatus();
+    }
 }

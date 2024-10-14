@@ -1,5 +1,6 @@
 import { ApiProperty } from "@nestjs/swagger";
 import { ProductCategoryValue } from "src/entities/domain/value-objects/product-category";
+import { OrderStatusValue } from "src/entities/domain/value-objects/order-status";
 
 export class CreateProductDto {
   @ApiProperty()

@@ -1,4 +1,3 @@
-import { exit } from "process";
 import { NotFoundException } from '@nestjs/common';
 import { ProductRepository } from "../repository/ports/product.repository";
 import { ProductDto } from "../types/dtos/product.dto";
@@ -25,7 +24,7 @@ export class ProductUseCases {
         return new ProductDto(await this.productRepository.update(id, product));
     }
 
-    async deleteProduct(id){        
+    async deleteProduct(id){
         return  await this.productRepository.delete(id);
     }
 }
