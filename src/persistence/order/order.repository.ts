@@ -31,13 +31,19 @@ export class PrismaOrderRepository implements OrderRepository {
         const persistedOrders = await this.prismaService.order.findMany({
             include: { customer: true },
             where : {
-                NOT: {
-                    status : OrderStatusValue.Finished
+                NOT: [
+                {
+                    status : OrderStatusValue.Finished,
+                },
+                {
+                    status : OrderStatusValue.Pending
                 }
-            },
-            orderBy: {
-                statusNum : 'desc'
-            }
+            ]},
+            orderBy: [{
+                    statusNum : 'desc',
+                },{
+                    createdAt : 'asc'
+                }]
         });
         return persistedOrders.map(p => this.orderMapper.fromPersistence(p))
     }
