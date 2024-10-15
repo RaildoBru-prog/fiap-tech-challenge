@@ -26,6 +26,9 @@
 
 [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
 
+## Desenho da Arquitetura
+<img src="/assets/img/Architecture.png">
+
 ## Project setup
 
 ```bash
