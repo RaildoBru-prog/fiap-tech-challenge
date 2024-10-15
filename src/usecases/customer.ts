@@ -33,7 +33,7 @@ export class CustomerUseCases {
         if(!( new Validate().validateEmail(email))) {
             return 'Email invalido.';
         }
-        
+
         /*if(!( new Validate().validateDocument(document))){
             return 'Numero do documento invalido.';
         }/*/

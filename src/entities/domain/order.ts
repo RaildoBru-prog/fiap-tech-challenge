@@ -19,7 +19,6 @@ class _Order<T extends PersistedEntity | NotPersistedEntity = PersistedEntity> e
   total: number;
   status: OrderStatus;
   statusNum: number;
-  //paymentStatus: OrderpaymentStatus;
 
   constructor(
     order: { 
@@ -28,8 +27,6 @@ class _Order<T extends PersistedEntity | NotPersistedEntity = PersistedEntity> e
       total: number;
       status: OrderStatusValue;
       statusNum: number;
-      //paymentStatus: OrderpaymentStatusValue
-      
     } & T
   ) {
     super(order);
@@ -38,7 +35,6 @@ class _Order<T extends PersistedEntity | NotPersistedEntity = PersistedEntity> e
     this.total = order.total;
     this.status = new OrderStatus(order.status);
     this.statusNum = order.statusNum;
-    //this.paymentStatus = new OrderpaymentStatus(order.paymentStatus);
   }
 
   update(order: { status: OrderStatus; statusNum: number }) {

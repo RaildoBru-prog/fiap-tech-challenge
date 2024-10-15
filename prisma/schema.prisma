@@ -33,7 +33,6 @@ model Order {
   products   OrderProduct[]
   status     OrderStatus
   statusNum  Int
-  //paymentStatus OrderPaymentStatus
 }
 
 type OrderProduct {
@@ -62,6 +61,7 @@ enum ProductCategory {
 }
 
 enum OrderStatus {
+  Pending
   Received
   Preparing
   Ready

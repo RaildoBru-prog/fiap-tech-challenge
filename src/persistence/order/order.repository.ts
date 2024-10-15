@@ -17,15 +17,7 @@ export class PrismaOrderRepository implements OrderRepository {
             data: this.orderMapper.toPersistence(order),
             include: { customer: true }
         });
-
-
-
-        /*const persistedOrder = await this.prismaService.order.create({
-            data: this.orderMapper.toPersistence(order),
-            include: { customer: true }
-        });*/
-        return 'teste';
-        //return this.orderMapper.fromPersistence(persistedOrder)
+        return this.orderMapper.fromPersistence(persistedOrder)
     }
 
     async findAll(): Promise<Order[]> {

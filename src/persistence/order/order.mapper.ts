@@ -32,7 +32,6 @@ export class OrderMapper {
       total: order.total,
       status: order.status.getValue(),
       statusNum: order.statusNum,
-      //paymentStatus: order.paymentStatus.getValue(),
     }
   }
 
@@ -49,7 +48,6 @@ export class OrderMapper {
       total: order.total,
       status: OrderStatusValue[order.status],
       statusNum: order.statusNum
-      //paymentStatus: OrderpaymentStatusValue[order.paymentStatus]
     })
   }
 }

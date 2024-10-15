@@ -3,7 +3,7 @@ import { OrderRepository } from 'src/repository/ports/order.repository';
 import { CustomerRepository } from "src/repository/ports/customer.repository";
 import { ProductRepository } from 'src/repository/ports/product.repository';
 import { OrderDto } from 'src/controllers/order/dtos/order.dto'; 
-import { OrderStatus } from "src/entities/domain/value-objects/order-status";
+import { OrderStatus, OrderStatusValue } from "src/entities/domain/value-objects/order-status";
 import { OrderStatusNumValue } from 'src/entities/domain/value-objects/order-status-num';
 import { NotPersistedOrder, Order } from "src/entities/domain/order";
 import * as _ from 'lodash';
@@ -22,10 +22,11 @@ export class OrderUseCases {
                 ? await this.customerRepository.findByID(order.customerId)
                 : null,
             products: order.products.map(p => ({ ...p, ...indexedProducts[p.id] })),
-            status: OrderStatus['Received'],
-            statusNum: 1,
+            status: OrderStatusValue.Pending,
+            statusNum: 0,
             total: products.reduce((acc, p) => acc + p.price, 0),
         });
+
         const persistedOrder = await this.orderRepository.create(newOrder);
         return await new OrderDto(persistedOrder);
     }

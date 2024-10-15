@@ -1,6 +1,7 @@
 import { ValueObject } from "./value-object";
 
 export enum OrderStatusNumValue {
+  Pending = 0,
   Received = 1,
   Preparing = 2,
   Ready = 3,

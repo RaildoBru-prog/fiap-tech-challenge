@@ -16,7 +16,6 @@ export class OrderDto {
   total: number;
   status: OrderStatusValue;
   statusNum: number;
-  //paymentStatus: OrderpaymentStatusValue;
   customer: {
     name: string,
     email: string,
@@ -35,7 +34,6 @@ export class OrderDto {
     this.total = order.total;
     this.status = order.status.getValue();
     this.statusNum = order.statusNum;
-    //this.paymentStatus = order.paymentStatus.getValue();
     this.customer = order.customer
       ? {
         name: order.customer.name,

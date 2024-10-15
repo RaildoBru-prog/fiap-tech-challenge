@@ -2,10 +2,14 @@ import { PaymentRepository } from 'src/repository/payment.repository';
 import { Payment } from 'src/entities/payment';
 
 export class CreatePaymentUseCase {
-//   /constructor(private paymentRepository: PaymentRepository) {}
+  constructor(
+    private idOrder = idOrder,
+    private amout = amout,
+    private status = status
+  ){}
 
-  async execute(amount: number, description: string): Promise<Payment> {
-    const payment = new Payment('6666', amount, description, 'pending');
+  async execute(){
+    const payment = new Payment(this.idOrder,this.amout, this.status);
     return payment;
   }
 }
