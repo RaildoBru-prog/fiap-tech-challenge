@@ -42,12 +42,26 @@ export class OrderUseCases {
     }
 
     async updateOrder(id, param){
-
         const ordeUpdate = {
-            "status" : OrderStatus[param.status],
+            "status" : OrderStatusValue[param.status],
             "statusNum" : OrderStatusNumValue[param.status]
         };
+        console.log(OrderStatusValue[param.status]);
+        console.log(OrderStatusNumValue[param.status]);
         await this.orderRepository.updateStatus(id, ordeUpdate);
         return await this.findOrderStatus();
+    }
+
+    async updatePayment(id, param){
+        console.log("=============");
+        console.log(param.status);
+        const ordePay = {
+            "status" : OrderStatusValue[param.status],
+            "statusNum" : OrderStatusNumValue[param.status]
+        };
+        console.log(param);
+
+        return this.orderRepository.updateStatus(id, ordePay);
+        return true;
     }
 }

@@ -1,12 +1,11 @@
 import { Injectable } from "@nestjs/common";
-import { OrderRepository } from "src/repository/ports/order.repository";
 import { CreateOrderDto } from "./dtos/create-order.dto";
+import { OrderRepository } from "src/repository/ports/order.repository";
 import { ProductRepository } from "src/repository/ports/product.repository";
 import { CustomerRepository } from "src/repository/ports/customer.repository";
 import { OrderUseCases } from 'src/usecases/order'
 import { CreatePaymentUseCase } from "@usecases/create-payment";
 import { PaymentAdapter } from "src/infrastructure/adapters/payment.adapter";
-
 
 @Injectable()
 export class OrderController {
@@ -17,7 +16,6 @@ export class OrderController {
     ){}
 
     async createrOrder(order: CreateOrderDto){
- 
         const orders = new OrderUseCases(this.orderRepository,this.productRepository, this.customerRepository)
         const createPayment = await orders.createOrder(order);        
         const payment = new CreatePaymentUseCase(

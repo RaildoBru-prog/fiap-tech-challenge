@@ -4,9 +4,9 @@ import axios from 'axios'
 
 export class PaymentAdapter {
     constructor(private payment = payment){}
-    async createPayment(): Promise<string> {
+    createPayment(){
         const urlpayment = process.env.URL_PAYMENT
-        return await axios.post(
+        return axios.post(
             urlpayment,{
             amount: this.payment.amount,
             orderId: this.payment.id,
