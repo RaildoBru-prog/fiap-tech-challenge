@@ -57,4 +57,10 @@ export class PrismaOrderRepository implements OrderRepository {
             data : { status : param.status, statusNum : param.statusNum }
         });
     }
+
+    async paymentStatus(id){
+        return await this.prismaService.order.findMany({
+            where : {id : id}
+        });
+    }
 }

@@ -41,6 +41,16 @@ export class OrderUseCases {
         return orders.map(o => new OrderDto(o));
     }
 
+    async findPaymentStatus(id){
+        const paymentStatus = await this.orderRepository.paymentStatus(id);
+        const payment =  paymentStatus[0]["status"] === OrderStatusValue.Refused? paymentStatus[0]["status"]: "Approved";
+        return {
+            orderId: paymentStatus[0]["id"],
+            Amout: paymentStatus[0]["total"],
+            paymentStatus : payment
+        }
+    }
+
     async updateOrder(id, param){
         const ordeUpdate = {
             "status" : OrderStatusValue[param.status],
@@ -62,6 +72,5 @@ export class OrderUseCases {
         console.log(param);
 
         return this.orderRepository.updateStatus(id, ordePay);
-        return true;
     }
 }

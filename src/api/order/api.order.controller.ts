@@ -27,6 +27,12 @@ export class ApiOrderController {
 		return this.orderController.findSort();
 	}
 
+	@Post('/payment/status/:id')
+	@HttpCode(200)
+	paymentStatus(@Param('id') id: string){
+		return this.orderController.paymentStatus(id);
+	}
+
 	@Put('/:id')
   		update(@Param('id') id: string, @Body() status: UpdateOrderDto )  {
 		return this.orderController.updateOrder(id, status);
