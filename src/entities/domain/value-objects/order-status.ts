@@ -6,6 +6,7 @@ export enum OrderStatusValue {
   Preparing = "Preparing",
   Ready = "Ready",
   Finished = "Finished",
+  Refused = "Refused"
 }
 
 export class OrderStatus extends ValueObject<OrderStatusValue> {}

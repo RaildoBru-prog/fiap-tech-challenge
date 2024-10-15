@@ -44,4 +44,9 @@ export class OrderController {
         const updateOrders = new OrderUseCases(this.orderRepository, this.productRepository, this.customerRepository);
         return await updateOrders.updateOrder(id, status);
     }
+
+    async paymentStatus(id){
+        const orderpaymentStatus = new OrderUseCases(this.orderRepository, this.productRepository, this.customerRepository);
+        return await orderpaymentStatus.findPaymentStatus(id);
+    }
 }

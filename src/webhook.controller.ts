@@ -24,7 +24,6 @@ export class WebhookController {
             const paymentId = body["OrderId"];
             const paymentStatus = body["Status"];
             console.log(`Pagamento ${paymentId} atualizado para ${paymentStatus}`);
-
             const params = {
                 "status" : "Received"
             };
@@ -34,6 +33,13 @@ export class WebhookController {
             });
             res.status(200).send({ message: 'Webhook recebido com sucesso' });
         }
+        ///Pagamento reprovado
+        const paymentRefusedId = body["OrderId"]
+        const params = {
+            "status" : "Received"
+        };
+        const url  = "http://localhost:3000/order/" + paymentRefusedId
+        axios.put(url,params);
     }
     sleep(ms: number): Promise<void> {
         return new Promise((resolve) => setTimeout(resolve, ms));
