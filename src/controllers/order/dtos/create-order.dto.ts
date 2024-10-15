@@ -1,4 +1,4 @@
-//import { ApiProperty } from "@nestjs/swagger";
+import { ApiProperty } from "@nestjs/swagger";
 
 class OrderProductDto {
   id: string;
@@ -7,7 +7,7 @@ class OrderProductDto {
 
 export class CreateOrderDto {
   customerId?: string;
-  //@ApiProperty({ type: () => OrderProductDto, isArray: true })
+  @ApiProperty({ type: () => OrderProductDto, isArray: true })
   products: OrderProductDto[];
 }
 

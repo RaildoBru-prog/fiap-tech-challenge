@@ -1,10 +1,10 @@
-//import { ApiProperty } from "@nestjs/swagger";
+import { ApiProperty } from "@nestjs/swagger";
 
 export class CreateCustomerDto {
-  //@ApiProperty()
+  @ApiProperty()
   name: string;
-  //@ApiProperty()
+  @ApiProperty()
   email: string;
-  //@ApiProperty()
+  @ApiProperty()
   document: string;
 }

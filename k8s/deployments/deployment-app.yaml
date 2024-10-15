@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app-lanchonete-fiap
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: app-lanchonete-fiap
+  template:
+    metadata:
+      labels:
+        app: app-lanchonete-fiap
+    spec:
+      containers:
+        - name: app-lanchonete-fiap-container
+          image: wagnersanches/app-lanchonete-fiap
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 3000
+            initialDelaySeconds: 30
+            periodSeconds: 10
+            timeoutSeconds: 5
+            successThreshold: 1
+            failureThreshold: 6
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 3000
+            initialDelaySeconds: 30
+            periodSeconds: 10
+            timeoutSeconds: 5
+            successThreshold: 1
+            failureThreshold: 6
+          env:
+            - name: DATABASE_URL
+              valueFrom:
+                secretKeyRef:
+                  name: mongo-creds
+                  key: mongo_url

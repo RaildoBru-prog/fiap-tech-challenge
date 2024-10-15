@@ -5,11 +5,7 @@ import { PersistenceCustomerModule } from 'src/persistence/customer/persistence.
 import { CustomerRepository } from "../repository/ports/customer.repository";
 import { Validate } from "./validator/validate"
 import { CreateCustomerDto } from "src/types/create-customer";
-import { exit } from "process";
 import { CustomerMapper } from '../persistence/customer/customer.mapper';
-import { ifError } from "assert";
-import { json } from "stream/consumers";
-
 
 export class CustomerUseCases {
     constructor(private customerRepository: CustomerRepository){}
@@ -37,7 +33,7 @@ export class CustomerUseCases {
         if(!( new Validate().validateEmail(email))) {
             return 'Email invalido.';
         }
-        
+
         /*if(!( new Validate().validateDocument(document))){
             return 'Numero do documento invalido.';
         }/*/

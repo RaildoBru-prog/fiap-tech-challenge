@@ -4,7 +4,6 @@ import { CreateCustomerDto } from './dtos/create-customer.dto';
 import { NotPersistedCustomer } from 'src/entities/domain/customer';
 import  { CustomerUseCases } from 'src/usecases/customer';
 
-
 @Injectable()
 export class CustomerController {
   constructor(private customerRepository: CustomerRepository){}

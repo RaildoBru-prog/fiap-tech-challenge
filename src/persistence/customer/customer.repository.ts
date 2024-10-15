@@ -3,18 +3,6 @@ import { PrismaService } from '../prisma.service';
 import { CustomerRepository } from 'src/repository/ports/customer.repository';
 import { NotPersistedCustomer } from 'src/entities/domain/customer';
 import { CustomerMapper } from './customer.mapper';
-//import { PrismaService } from '../prisma.service';
-
-
-/*
-import { Injectable } from '@nestjs/common';
-import { ProductRepository } from 'src/application/ports/product.repository';
-import { NotPersistedProduct, Product } from 'src/entities/domain/product';
-import { ProductCategoryValue } from 'src/entities/domain/value-objects/product-category';
-import { PrismaService } from '../interfaces/prisma.service';
-import { ProductMapper } from './product.mapper';
-import { NotFoundError } from 'src/application/errors/not-found.error';
-*/
 
 @Injectable()
 export class PrismaCustomerRepository implements CustomerRepository {
